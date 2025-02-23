@@ -76,3 +76,39 @@ console.log(mgr1.getDetails());
 //Logging the bonus to the console
 //Expected output: 9600
 console.log("Bonus:", mgr1.calculateBonus());
+
+//Task 3 - Created Company Class
+
+//Defines a Company class to manage employees and payroll
+class Company {
+    constructor(name) {
+        
+        //Stores the company name
+        this.name = name;
+
+        //Stores the list of employees working in the company
+        this.employees = [];
+    }
+
+    //Adds an employee to the company's employee list
+    addEmployee(employee) {
+        this.employees.push(employee);
+    }
+
+    //Displays the details of all employees in the company
+    listEmployees() {
+        this.employees.forEach(employee => console.log(employee.getDetails()));
+    }
+}
+
+//Creating a company instance
+const company = new Company("TechCorp");
+
+//Adding Alice Johnson (Employee)
+company.addEmployee(emp1);
+
+//Adding John Smith (Manager)
+company.addEmployee(mgr1);
+
+//Display the list of employees before promotion
+company.listEmployees();
