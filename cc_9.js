@@ -37,3 +37,42 @@ console.log(emp1.getDetails());
 //Logging the annual salary to the console
 //Expected output: 60000
 console.log("Annual salary:", emp1.calculateAnnualSalary());
+
+//Task 2 - Created Manager Class with Inheritance
+
+//Defines a Manager class that extends the Employee class and adds management responsibilities
+class Manager extends Employee {
+    constructor(name, id, department, salary, teamSize) {
+        
+        //Calls the Employee constructor to inherit its properties
+        super(name, id, department, salary);
+
+        //Stores the number of employees managed by the manager
+        this.teamSize = teamSize;
+    }
+
+    //Overrides getDetails() to include the team size in the details
+    getDetails() {
+        return `Manager: ${this.name}, ID: ${this.id}, Department: ${this.department}, Salary: $${this.salary}, Team Size: ${this.teamSize}`;
+    }
+
+    //Computes and returns the manager's annual bonus which is 10% of the annual salary
+    calculateBonus() {
+        return this.salary * 12 * 0.10;
+    }
+
+    //Computes the total annual salary including the bonus
+    calculateAnnualSalary() {
+        return (this.salary * 12) + this.calculateBonus();
+    }
+}
+
+//Creating an instance of the Manager class
+const mgr1 = new Manager("John Smith", 201, "IT", 8000, 5);
+
+//Displaying manager details and logging them to the console
+console.log(mgr1.getDetails()); 
+
+//Logging the bonus to the console
+//Expected output: 9600
+console.log("Bonus:", mgr1.calculateBonus());
