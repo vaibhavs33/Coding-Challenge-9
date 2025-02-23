@@ -107,6 +107,26 @@ class Company {
         return this.employees.reduce((total, employee) => total + employee.calculateAnnualSalary(), 0);
     }
 
+    //Task 5 - Implemented Promotion System
+
+    //Promotes an existing employee to a Manager role with the specified team size
+    promoteToManager(employee, teamSize) {
+        
+        //Finding the index of the employee in the employee list
+        const index = this.employees.indexOf(employee);
+
+        //Checking if the employee exists in the list before promotion
+        if (index !== -1) {
+            
+            //Replace the Employee instance with a Manager instance, keeping the other attributes the same
+            this.employees[index] = new Manager(employee.name, employee.id, employee.department, employee.salary, teamSize);
+        
+        } else {
+            //Logging to the console if the employee is not found
+            console.log("Employee not found in the company.");
+        }
+    }
+
 }
 
 //Creating a company instance
@@ -124,3 +144,9 @@ company.listEmployees();
 //Logging the total payroll of all employees to the console
 //Expected output: 165600
 console.log("Total payroll:", company.calculateTotalPayroll());
+
+//Promoting Alice Johnson to a Manager position with a team size of 3
+company.promoteToManager(emp1, 3);
+
+//Displaying the updated employee list after promotion
+company.listEmployees();
