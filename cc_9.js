@@ -99,6 +99,14 @@ class Company {
     listEmployees() {
         this.employees.forEach(employee => console.log(employee.getDetails()));
     }
+
+    //Task 4 - Implemented Payroll System
+
+    //Calculates and returns the total payroll for all employees in the company
+    calculateTotalPayroll() {
+        return this.employees.reduce((total, employee) => total + employee.calculateAnnualSalary(), 0);
+    }
+
 }
 
 //Creating a company instance
@@ -112,3 +120,7 @@ company.addEmployee(mgr1);
 
 //Display the list of employees before promotion
 company.listEmployees();
+
+//Logging the total payroll of all employees to the console
+//Expected output: 165600
+console.log("Total payroll:", company.calculateTotalPayroll());
